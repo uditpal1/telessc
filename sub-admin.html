@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SSC GD Sub Admin</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="topbar"><strong>👨‍💼 SSC GD Sub Admin</strong><button id="subLogout" class="ghost">Logout</button></header>
+<main class="admin-layout">
+<aside class="sidebar">
+<button data-sub="dashboard">Dashboard</button><button data-sub="users">Users / Performance</button><button data-sub="results">Results</button><button data-sub="analytics">Analytics</button><button data-sub="scoreboard">Scoreboard</button>
+</aside>
+<section class="admin-content">
+<div id="sub-dashboard" class="sub-view"><h1>Dashboard</h1><div id="subStats" class="grid2"></div></div>
+<div id="sub-users" class="sub-view hidden"><h1>Users / Performance</h1><div id="subUsers"></div></div>
+<div id="sub-results" class="sub-view hidden"><h1>Results</h1><div id="subResults"></div></div>
+<div id="sub-analytics" class="sub-view hidden"><h1>Analytics</h1><div id="subAnalytics"></div></div>
+<div id="sub-scoreboard" class="sub-view hidden"><h1>Scoreboard</h1><div id="subScoreboard"></div></div>
+</section>
+</main>
+<script src="js/config.js"></script><script src="js/sub-admin.js"></script>
+</body></html>

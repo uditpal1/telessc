@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SSC GD Main Admin</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="topbar"><strong>👑 SSC GD Main Admin</strong><button id="adminLogout" class="ghost">Logout</button></header>
+<main class="admin-layout">
+<aside class="sidebar">
+<button data-admin="dashboard">Dashboard</button><button data-admin="users">Users</button><button data-admin="results">Results</button><button data-admin="analytics">Analytics</button><button data-admin="tests">Tests</button><button data-admin="referrals">Referral Codes</button><button data-admin="subadmin">Sub Admin</button><button data-admin="scoreboard">Scoreboard</button>
+</aside>
+<section class="admin-content">
+<div id="admin-dashboard" class="admin-view"><h1>Dashboard</h1><div id="adminStats" class="grid2"></div></div>
+<div id="admin-users" class="admin-view hidden"><h1>Users</h1><input id="userSearch" placeholder="Search name/mobile/email"><div id="usersTable"></div></div>
+<div id="admin-results" class="admin-view hidden"><h1>Results</h1><div id="resultsTable"></div></div>
+<div id="admin-analytics" class="admin-view hidden"><h1>Analytics</h1><div id="analyticsBox"></div></div>
+<div id="admin-tests" class="admin-view hidden"><h1>Tests</h1><div class="card"><p>Questions are managed as GitHub JSON files. Add/edit test metadata here later if required.</p><p><b>50 full mocks planned.</b> Each: 80 questions, 160 marks, 60 minutes.</p></div></div>
+<div id="admin-referrals" class="admin-view hidden"><h1>Referral Codes</h1><div class="card"><p>Referral management UI placeholder is intentionally minimal. Main Admin can create codes after connecting the form to the referral_codes table.</p></div></div>
+<div id="admin-subadmin" class="admin-view hidden"><h1>Sub Admin</h1><div class="card"><p>Main Admin controls Sub Admin accounts. Sub Admin is read-only.</p></div></div>
+<div id="admin-scoreboard" class="admin-view hidden"><h1>Scoreboard</h1><div id="adminScoreboard"></div></div>
+</section>
+</main>
+<script src="js/config.js"></script><script src="js/admin.js"></script>
+</body></html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>SSC GD Mock Test</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="topbar">
+  <div><strong>SSC GD</strong><span class="muted"> Mock Test</span></div>
+  <button id="logoutBtn" class="ghost hidden">Logout</button>
+</header>
+
+<main id="app">
+  <section id="home" class="view">
+    <div class="hero card">
+      <span class="badge">TELEGRAM MINI APP</span>
+      <h1>SSC GD Mock Test</h1>
+      <p>Full mocks, subject tests, detailed performance and scoreboard — directly inside Telegram.</p>
+      <div class="grid2">
+        <button class="primary" data-go="dashboard">🚀 Start App</button>
+        <button class="secondary" data-go="full-tests">📝 Full Mocks</button>
+      </div>
+    </div>
+    <div class="grid2 stats">
+      <div class="card"><b>80</b><span>Questions</span></div>
+      <div class="card"><b>160</b><span>Marks</span></div>
+      <div class="card"><b>60 min</b><span>Duration</span></div>
+      <div class="card"><b>-0.25</b><span>Negative</span></div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="view hidden">
+    <div class="section-head"><div><span class="muted">Welcome</span><h2 id="userName">User</h2></div><span id="premiumBadge" class="badge">FREE</span></div>
+    <div class="grid2 stats">
+      <div class="card"><b id="statAttempts">0</b><span>Attempts</span></div>
+      <div class="card"><b id="statAvg">0</b><span>Average Score</span></div>
+      <div class="card"><b id="statBest">0</b><span>Best Score</span></div>
+      <div class="card"><b id="statPct">0%</b><span>Average %</span></div>
+    </div>
+    <div class="cta-list">
+      <button class="cta" data-go="full-tests">📝 Full Mock Tests <small>50 planned</small></button>
+      <button class="cta" data-go="subject-tests">📚 Subject Tests <small>Unlimited attempts</small></button>
+      <button class="cta" data-go="performance">📊 My Performance</button>
+      <button class="cta" data-go="scoreboard">🏆 Scoreboard</button>
+      <button class="cta" data-go="premium">⭐ SSC GD Premium</button>
+      <button class="cta" data-go="profile">👤 Profile</button>
+    </div>
+  </section>
+
+  <section id="full-tests" class="view hidden">
+    <div class="section-head"><h2>Full Mock Tests</h2><button class="ghost" data-go="dashboard">Back</button></div>
+    <div id="fullTestsList"></div>
+  </section>
+
+  <section id="subject-tests" class="view hidden">
+    <div class="section-head"><h2>Subject Tests</h2><button class="ghost" data-go="dashboard">Back</button></div>
+    <div class="grid2">
+      <button class="subject-card" data-subject="reasoning">🧠 Reasoning</button>
+      <button class="subject-card" data-subject="gk-ga">🌍 GK / GA</button>
+      <button class="subject-card" data-subject="mathematics">➗ Mathematics</button>
+      <button class="subject-card" data-subject="english-hindi">🔤 English / Hindi</button>
+    </div>
+  </section>
+
+  <section id="test" class="view hidden">
+    <div class="testbar"><span id="testSection">Reasoning</span><strong id="timer">15:00</strong></div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div class="card">
+      <div class="muted" id="questionNo">Question 1</div>
+      <h2 id="questionText">Loading...</h2>
+      <div id="options"></div>
+    </div>
+    <div class="grid2">
+      <button id="prevBtn" class="secondary">Previous</button>
+      <button id="nextBtn" class="primary">Next</button>
+    </div>
+    <button id="submitSectionBtn" class="danger full">Submit Section</button>
+  </section>
+
+  <section id="result" class="view hidden">
+    <div class="card center">
+      <span class="badge">RESULT</span><h2>Mock Completed</h2>
+      <div class="big-score" id="resultScore">0 / 160</div>
+      <p id="resultSummary"></p>
+      <div id="resultSections"></div>
+      <div class="grid2">
+        <button class="primary" data-go="performance">Performance</button>
+        <button class="secondary" data-go="scoreboard">Scoreboard</button>
+      </div>
+      <button class="ghost full" data-go="dashboard">Dashboard</button>
+    </div>
+  </section>
+
+  <section id="performance" class="view hidden">
+    <div class="section-head"><h2>My Performance</h2><button class="ghost" data-go="dashboard">Back</button></div>
+    <div id="performanceBox" class="card"></div>
+  </section>
+
+  <section id="scoreboard" class="view hidden">
+    <div class="section-head"><h2>🏆 Scoreboard</h2><button class="ghost" data-go="dashboard">Back</button></div>
+    <div class="card table-wrap"><table><thead><tr><th>Rank</th><th>User</th><th>Tests</th><th>Avg</th><th>Best</th></tr></thead><tbody id="scoreboardBody"></tbody></table></div>
+  </section>
+
+  <section id="premium" class="view hidden">
+    <div class="card">
+      <span class="badge">SSC GD PREMIUM</span><h2>Unlock Full Access</h2>
+      <p>50 full mocks, subject tests and future SSC GD tests.</p>
+      <ul><li>50 Full Mocks</li><li>Unlimited Subject Tests</li><li>Detailed Performance</li></ul>
+      <div class="grid2">
+        <a id="waBtn" class="primary button-link" target="_blank">WhatsApp</a>
+        <a id="tgBtn" class="secondary button-link" target="_blank">Telegram</a>
+      </div>
+      <button class="ghost full" data-go="dashboard">Back</button>
+    </div>
+  </section>
+
+  <section id="profile" class="view hidden">
+    <div class="section-head"><h2>Profile</h2><button class="ghost" data-go="dashboard">Back</button></div>
+    <div id="profileBox" class="card"></div>
+  </section>
+
+  <section id="loading" class="view hidden center"><div class="spinner"></div><p>Loading...</p></section>
+</main>
+
+<nav id="bottomNav" class="bottom-nav hidden">
+  <button data-go="dashboard">Home</button>
+  <button data-go="full-tests">Tests</button>
+  <button data-go="performance">Stats</button>
+  <button data-go="scoreboard">Rank</button>
+  <button data-go="profile">Profile</button>
+</nav>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/test-engine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
